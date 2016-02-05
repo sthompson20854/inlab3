@@ -1,0 +1,83 @@
+/**
+ * The cart of my grocerys and where receipt function is
+ * STEVEN THOMPSON
+ * 2/4/16
+ */
+public class Cart
+{
+    // instance variables - replace the example below with your own
+    private String name;
+    private GroceryItem item1;
+    private GroceryItem item2;
+ 
+    private int amount1;
+    private int amount2;
+    private double total1;
+    private double total2;
+    private double sub;
+    private double tax;
+    private double finalcost;
+   
+    public Cart (String inName) //make the names
+    {
+        name = inName;
+    
+  
+}
+public void addItem1(GroceryItem addItem1, int newAmount) // get items from GroceryItem class
+{
+   
+  item1 = addItem1;
+  amount1 = newAmount;
+  item1.updateStock(amount1);
+    
+}
+public void addItem2(GroceryItem addItem2, int newAmount)  //get items from GroceryItem Class
+{
+    amount2 = newAmount;
+    item2 = addItem2;
+    item2.updateStock(amount2);
+}
+public double getTotal1() //Get total of items cost
+{
+   total1 = amount1 * item1.getCost();
+   
+   return total1;
+ 
+   
+} 
+
+public double getTotal2() // get total of items cost
+{
+     
+      total2 = amount2 * item2.getCost();
+      return total2;
+    }
+public double getSub() //get total of both items
+    {
+        sub = total1 + total2;
+        return sub;
+    }
+ public double getTax() //Find tax
+    {
+        tax = sub * 7/100;
+        return tax;
+    }
+ public double getFinal() // add tax to sub total
+ {
+    finalcost = tax + sub;
+    return finalcost;
+}
+public void printReceipt()  //print the name and items
+{
+ System.out.println(  "Shopper name " + name);
+ System.out.println( "------------------");
+System.out.println( item1.getName() + ": " + amount1 + " units at $" + item1.getCost() + " per unit = $" + getTotal1() );
+System.out.println( item2.getName() + ": " + amount2 + " units at $" + item2.getCost() + " per unit = $" + getTotal2() );
+System.out.println( "-----> Subtotal = $" + getSub());
+System.out.println( "-----> 7% tax = $" + getTax());
+System.out.println( "-------> Total = $" + getFinal());
+System.out.println();
+System.out.println();
+} 
+}
